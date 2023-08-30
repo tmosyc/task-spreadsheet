@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task_managemant</title>
+</head>
+<body>
+    <h1>タスク管理</h1>
+    <form action=/task_register method="POST">
+        タスクのタイトル<input type="text" name="task_title">
+        タスクの内容<input type="text" name="task_content">
+        <button type="submit">送信</button>
+    </form>
+
+    {% for item in datas %}
+    <ul>
+        <li>{{item.id}}</li>
+        <li>{{item.title}}</li>
+        <li>{{item.content}}</li>
+        <form action="/delete/{{item.id}}" method="POST">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit">削除</button>
+        </form>
+    </ul>
+    {% endfor %}
+
+
+</body>
+</html>
